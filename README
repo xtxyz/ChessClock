@@ -2,6 +2,10 @@ As one might think, this is a Chess Clock; a simple program to keep track of the
 
 "src" is from the project's main folder in NetBeans ("NetBeansProjects/chessClock") and includes the .form file NetBeans's GUI editor uses. If one is not using NetBeans, the .form file is useless.
 
+Compile from src:
+
+
+
 Pending - 
 
 Fix the GUI:
