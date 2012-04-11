@@ -1,3 +1,11 @@
 As one might think, this is a Chess Clock; a simple program to keep track of the time each player in a game of chess has taken.
 
 "src" is from the project's main folder in NetBeans ("NetBeansProjects/chessClock") and includes the .form file NetBeans's GUI editor uses. If one is not using NetBeans, the .form file is useless.
+
+Pending - 
+
+Fix the GUI:
+  Align the elements properly
+  Make the system for hiding the first elements shown better?
+Add a pause button
+Cause the whole screen to change colour, instead of just the box?
