@@ -4,6 +4,11 @@ As one might think, this is a Chess Clock; a simple program to keep track of the
 
 Compile from src:
 
+//
+
+Abandoned NetBeans and it's GUI builder. Compile chessClockGUI.java from above it's directory, which must be "chessclock".
+
+
 
 
 Pending - 
@@ -13,3 +18,12 @@ Fix the GUI:
   Make the system for hiding the first elements shown better?
 Add a pause button
 Cause the whole screen to change colour, instead of just the box?
+
+
+switchUI() does not work. It must be made to work with CardLayout's functionality.
+Components must be added to panel2 and panel3 (the 2nd and 3rd cards).
+All cards need a layout manager themselves (GroupLayout, the same as NetBeans uses. Hopefully I will have better luck using it manually.)
+
+A link to Oracle's GUI layout tutorial:
+
+http://docs.oracle.com/javase/tutorial/uiswing/layout/index.html
