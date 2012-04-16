@@ -27,3 +27,30 @@ All cards need a layout manager themselves (GroupLayout, the same as NetBeans us
 A link to Oracle's GUI layout tutorial:
 
 http://docs.oracle.com/javase/tutorial/uiswing/layout/index.html
+
+
+GUI Elements: 
+
+Card 1: 
+
+Label: "How long would you like your game to be?"
+Hour Slider & Label & Setting Label
+Minute Slider & Label & Setting Label
+Second Slider & Label & Setting Label
+Ready Button
+
+
+Card 2: 
+
+Start Button
+Player 1 Timer & Label
+Player 2 Timer & Label
+Done Button
+Turn display frame
+Instructional Label
+
+
+Card 3: 
+
+Winner display label
+Done Button
