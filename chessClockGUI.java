@@ -7,6 +7,7 @@ import java.awt.Color;
 import javax.swing.SwingWorker;
 import java.awt.event.*;
 import java.awt.*;
+import javax.swing.GroupLayout;
 
 public class chessClockGUI extends javax.swing.JFrame {
 
@@ -27,6 +28,13 @@ public class chessClockGUI extends javax.swing.JFrame {
 		panel2 = new javax.swing.JPanel();
 		panel3 = new javax.swing.JPanel();
 		
+		GroupLayout p1Layout = new javax.swing.GroupLayout(panel1);
+		panel1.setLayout(p1Layout);
+		GroupLayout p2Layout = new javax.swing.GroupLayout(panel2);
+		panel2.setLayout(p2Layout);
+		GroupLayout p3Layout = new javax.swing.GroupLayout(panel3);
+		panel3.setLayout(p3Layout);
+		
 		//The elements for the first panel.
         titleLable = new javax.swing.JLabel();
         hourSlider = new javax.swing.JSlider();
@@ -39,6 +47,57 @@ public class chessClockGUI extends javax.swing.JFrame {
         minuteShow = new javax.swing.JLabel();
         secondShow = new javax.swing.JLabel();
 		readyButton = new javax.swing.JButton();
+		
+		//and it's layout
+		//p1Layout.setAutoCreateGaps(true);
+		//p1Layout.setAutoCreateContainerGaps(true);
+		
+		
+		p1Layout.setHorizontalGroup(
+			p1Layout.createSequentialGroup()
+				.addGroup(p1Layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+					.addComponent(hourShow)
+					.addComponent(hourSlider)
+					.addComponent(hourNote)
+				)
+				.addGroup(p1Layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+					.addComponent(titleLable)
+					.addComponent(minuteShow)
+					.addComponent(minuteSlider)
+					.addComponent(minuteNote)
+					.addComponent(readyButton)
+				)
+				.addGroup(p1Layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+					.addComponent(secondShow)
+					.addComponent(secondSlider)
+					.addComponent(secondNote)
+				)
+		);
+		
+		p1Layout.setVerticalGroup(
+			p1Layout.createSequentialGroup()
+				.addGroup(p1Layout.createSequentialGroup()
+					.addComponent(titleLable)
+				)
+				.addGroup(p1Layout.createSequentialGroup()
+					.addComponent(hourShow)
+					.addComponent(minuteShow)
+					.addComponent(secondShow)
+				)
+				.addGroup(p1Layout.createSequentialGroup()
+					.addComponent(hourSlider)
+					.addComponent(minuteSlider)
+					.addComponent(secondSlider)
+				)
+				.addGroup(p1Layout.createSequentialGroup()
+					.addComponent(hourNote)
+					.addComponent(minuteNote)
+					.addComponent(secondNote)
+				)
+				.addGroup(p1Layout.createSequentialGroup()
+					.addComponent(readyButton)
+				)
+		);
 		
 		//The elements for the second panel.
         p1TimerLabel = new javax.swing.JLabel();
@@ -431,6 +490,9 @@ public class chessClockGUI extends javax.swing.JFrame {
 	final static String PANELTHREE = "The third panel.";
 	private javax.swing.JPanel mainPanel;
 	private java.awt.CardLayout mpLayout;
+	private javax.swing.GroupLayout p1Layout;
+	private javax.swing.GroupLayout p2Layout;
+	private javax.swing.GroupLayout p3Layout;
 	private javax.swing.JPanel panel1;
 	private javax.swing.JPanel panel2;
 	private javax.swing.JPanel panel3;
