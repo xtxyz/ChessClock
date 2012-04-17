@@ -7,7 +7,8 @@ import java.awt.Color;
 import javax.swing.SwingWorker;
 import java.awt.event.*;
 import java.awt.*;
-import javax.swing.GroupLayout;
+import java.awt.GridBagLayout;
+import javax.swing.LayoutStyle;
 
 public class chessClockGUI extends javax.swing.JFrame {
 
@@ -28,12 +29,15 @@ public class chessClockGUI extends javax.swing.JFrame {
 		panel2 = new javax.swing.JPanel();
 		panel3 = new javax.swing.JPanel();
 		
-		GroupLayout p1Layout = new javax.swing.GroupLayout(panel1);
+		GridBagLayout p1Layout = new java.awt.GridBagLayout();
 		panel1.setLayout(p1Layout);
-		GroupLayout p2Layout = new javax.swing.GroupLayout(panel2);
+		GridBagConstraints p1c = new java.awt.GridBagConstraints();
+		GridBagLayout p2Layout = new java.awt.GridBagLayout();
 		panel2.setLayout(p2Layout);
-		GroupLayout p3Layout = new javax.swing.GroupLayout(panel3);
+		GridBagConstraints p2c = new java.awt.GridBagConstraints();
+		GridBagLayout p3Layout = new java.awt.GridBagLayout();
 		panel3.setLayout(p3Layout);
+		GridBagConstraints p3c = new java.awt.GridBagConstraints();
 		
 		//The elements for the first panel.
         titleLable = new javax.swing.JLabel();
@@ -49,55 +53,56 @@ public class chessClockGUI extends javax.swing.JFrame {
 		readyButton = new javax.swing.JButton();
 		
 		//and it's layout
-		//p1Layout.setAutoCreateGaps(true);
-		//p1Layout.setAutoCreateContainerGaps(true);
+		p1c.anchor = GridBagConstraints.CENTER;
+		p1c.weightx = 1;
+		p1c.weighty = 1;
+		p1c.gridx = 0;
+		p1c.gridy = 1;
+		
+		p1Layout.addLayoutComponent(hourNote, p1c);
+		
+		p1c.gridy = 2;
+		p1Layout.addLayoutComponent(hourSlider, p1c);
+		
+		p1c.gridy = 3;
+		p1Layout.addLayoutComponent(hourShow, p1c);
+		
+		p1c.gridx = 0;
+		p1c.gridy = 0;
+		p1c.gridwidth = 3;
+		p1Layout.addLayoutComponent(titleLable, p1c);
+		
+		p1c.gridwidth = 1;
+		p1c.gridx = 1;
+		p1c.gridy = 1;
+		p1Layout.addLayoutComponent(minuteNote, p1c);
+		
+		p1c.gridx = 1;
+		p1c.gridy = 2;
+		p1Layout.addLayoutComponent(minuteSlider, p1c);
+		
+		p1c.gridx = 1;
+		p1c.gridy = 3;
+		p1Layout.addLayoutComponent(minuteShow, p1c);
+		
+		p1c.gridx = 1;
+		p1c.gridy = 4;
+		p1Layout.addLayoutComponent(readyButton, p1c);
+		
+		p1c.gridx = 2;
+		p1c.gridy = 1;
+		p1Layout.addLayoutComponent(secondNote, p1c);
+		
+		p1c.gridx = 2;
+		p1c.gridy = 2;
+		p1Layout.addLayoutComponent(secondSlider, p1c);
+		
+		p1c.gridx = 2;
+		p1c.gridy = 3;
+		p1Layout.addLayoutComponent(secondShow, p1c);
 		
 		
-		p1Layout.setHorizontalGroup(
-			p1Layout.createSequentialGroup()
-				.addGroup(p1Layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-					.addComponent(hourShow)
-					.addComponent(hourSlider)
-					.addComponent(hourNote)
-				)
-				.addGroup(p1Layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-					.addComponent(titleLable)
-					.addComponent(minuteShow)
-					.addComponent(minuteSlider)
-					.addComponent(minuteNote)
-					.addComponent(readyButton)
-				)
-				.addGroup(p1Layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-					.addComponent(secondShow)
-					.addComponent(secondSlider)
-					.addComponent(secondNote)
-				)
-		);
 		
-		p1Layout.setVerticalGroup(
-			p1Layout.createSequentialGroup()
-				.addGroup(p1Layout.createSequentialGroup()
-					.addComponent(titleLable)
-				)
-				.addGroup(p1Layout.createSequentialGroup()
-					.addComponent(hourShow)
-					.addComponent(minuteShow)
-					.addComponent(secondShow)
-				)
-				.addGroup(p1Layout.createSequentialGroup()
-					.addComponent(hourSlider)
-					.addComponent(minuteSlider)
-					.addComponent(secondSlider)
-				)
-				.addGroup(p1Layout.createSequentialGroup()
-					.addComponent(hourNote)
-					.addComponent(minuteNote)
-					.addComponent(secondNote)
-				)
-				.addGroup(p1Layout.createSequentialGroup()
-					.addComponent(readyButton)
-				)
-		);
 		
 		//The elements for the second panel.
         p1TimerLabel = new javax.swing.JLabel();
@@ -109,18 +114,72 @@ public class chessClockGUI extends javax.swing.JFrame {
         p2Label = new javax.swing.JLabel();
         instructionLabel = new javax.swing.JLabel();
 		
+		//and it's layout
+		p2c.anchor = GridBagConstraints.CENTER;
+		p2c.weightx = 1;
+		p2c.weighty = 1;
+		p2c.gridx = 0;
+		p2c.gridy = 1;
+		
+		p2Layout.addLayoutComponent(p1Label, p2c);
+		
+		p2c.gridx = 0;
+		p2c.gridy = 2;
+		p2Layout.addLayoutComponent(p1TimerLabel, p2c);
+		
+		p2c.gridx = 0;
+		p2c.gridy = 3;
+		p2Layout.addLayoutComponent(activePlayerLabel, p2c);
+		
+		p2c.gridx = 1;
+		p2c.gridy = 0;
+		p2Layout.addLayoutComponent(instructionLabel, p2c);
+		
+		p2c.gridx = 1;
+		p2c.gridy = 2;
+		p2Layout.addLayoutComponent(startButton, p2c);
+		
+		p2c.gridx = 1;
+		p2c.gridy = 3;
+		p2Layout.addLayoutComponent(doneButton, p2c);
+		
+		p2c.gridx = 3;
+		p2c.gridy = 1;
+		p2Layout.addLayoutComponent(p2Label, p2c);
+		
+		p2c.gridx = 3;
+		p2c.gridy = 2;
+		p2Layout.addLayoutComponent(p2TimerLabel, p2c);
+		
 		//The elements for the third panel.
 		p1Win = new javax.swing.JLabel();
 		p2Win = new javax.swing.JLabel();
 		doneButton2 = new javax.swing.JButton();
+		
+		//and it's layout
+		
+		p3c.anchor = GridBagConstraints.CENTER;
+		p3c.weightx = 1;
+		p3c.weighty = 1;
+		p3c.gridx = 1;
+		p3c.gridy = 2;
+		
+		p3Layout.addLayoutComponent(p1Win, p3c);
+		
+		p3c.gridx = 1;
+		p3c.gridy = 3;
+		p3Layout.addLayoutComponent(doneButton2, p3c);
+		
+		p3c.gridx = 1;
+		p3c.gridy = 2;
+		p3Layout.addLayoutComponent(p2Win, p3c);
 
 		//For the main window, I guess. Does it ever mention the main window?
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chess Clock");
 
 		//The elements of the first panel.
-        titleLable.setFont(new java.awt.Font("Ubuntu", 0, 36)); 
-        titleLable.setBounds(90, 40, 688, 43);
+        titleLable.setFont(new java.awt.Font("Ubuntu", 0, 28)); 
         titleLable.setText("How long would you like your game to be?");
         panel1.add(titleLable);
 
@@ -131,7 +190,6 @@ public class chessClockGUI extends javax.swing.JFrame {
                 hourSliderStateChanged(evt);
             }
         });
-        hourSlider.setBounds(50, 170, 204, 44);
         panel1.add(hourSlider);
 
         minuteSlider.setMaximum(60);
@@ -141,7 +199,6 @@ public class chessClockGUI extends javax.swing.JFrame {
                 minuteSliderStateChanged(evt);
             }
         });
-        minuteSlider.setBounds(320, 170, 204, 44);
         panel1.add(minuteSlider);
 
         secondSlider.setMaximum(60);
@@ -151,31 +208,24 @@ public class chessClockGUI extends javax.swing.JFrame {
                 secondSliderStateChanged(evt);
             }
         });
-        secondSlider.setBounds(600, 170, 204, 44);
         panel1.add(secondSlider);
 
         hourNote.setText("Hours");
-        hourNote.setBounds(130, 150, 42, 17);
         panel1.add(hourNote);
 
         minuteNote.setText("Minutes");
-        minuteNote.setBounds(390, 160, 56, 17);
         panel1.add(minuteNote);
 
         secondNote.setText("Seconds");
-        secondNote.setBounds(680, 160, 59, 17);
         panel1.add(secondNote);
 
         hourShow.setText("0");
-        hourShow.setBounds(130, 230, 40, 17);
         panel1.add(hourShow);
 
         minuteShow.setText("0");
-        minuteShow.setBounds(420, 220, 40, 17);
         panel1.add(minuteShow);
 
         secondShow.setText("0");
-        secondShow.setBounds(710, 220, 40, 17);
         panel1.add(secondShow);
 		
 		readyButton.setText("Ready");
@@ -184,7 +234,6 @@ public class chessClockGUI extends javax.swing.JFrame {
                 readyButtonActionPerformed(evt);
             }
         });
-        readyButton.setBounds(410, 260, 80, 29);
         panel1.add(readyButton);
 
 		//The first "card"
@@ -192,15 +241,7 @@ public class chessClockGUI extends javax.swing.JFrame {
 		
 		//Adding the first card to the card holder.
         mainPanel.add(panel1, PANELONE);
-				
 
-		
-		
-		
-		
-		
-		
-		
 		
 		//The elements of the second panel.
         panel2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -261,7 +302,7 @@ public class chessClockGUI extends javax.swing.JFrame {
 
         p2Win.setFont(new java.awt.Font("Ubuntu", 0, 24)); 
         p2Win.setText("Player 2 wins!");
-		panel3.add(p1Win);
+		panel3.add(p2Win);
 		
 		doneButton2.setFont(new java.awt.Font("Ubuntu", 0, 24)); 
         doneButton2.setText("Done");
@@ -411,13 +452,13 @@ public class chessClockGUI extends javax.swing.JFrame {
         }
         //End of game method.
         public void gameEnd() {
-			switchUI(3,1);
             if(p1Active){
-                p2Win.setVisible(true);
+                p1Win.setVisible(false);
             }
             else if(!p1Active){
-                p1Win.setVisible(true);
+                p2Win.setVisible(false);
             }
+			switchUI(3,1);
         }
         //The main timer method, which runs in a background thread.
         @Override
@@ -488,11 +529,14 @@ public class chessClockGUI extends javax.swing.JFrame {
 	final static String PANELONE = "The first panel.";
 	final static String PANELTWO = "The second panel.";
 	final static String PANELTHREE = "The third panel.";
+	private java.awt.GridBagConstraints p1c;
+	private java.awt.GridBagConstraints p2c;
+	private java.awt.GridBagConstraints p3c;
 	private javax.swing.JPanel mainPanel;
 	private java.awt.CardLayout mpLayout;
-	private javax.swing.GroupLayout p1Layout;
-	private javax.swing.GroupLayout p2Layout;
-	private javax.swing.GroupLayout p3Layout;
+	private java.awt.GridBagLayout p1Layout;
+	private java.awt.GridBagLayout p2Layout;
+	private java.awt.GridBagLayout p3Layout;
 	private javax.swing.JPanel panel1;
 	private javax.swing.JPanel panel2;
 	private javax.swing.JPanel panel3;
