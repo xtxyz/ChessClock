@@ -402,7 +402,7 @@ public class chessClockGUI extends javax.swing.JFrame {
     private void panel2KeyPressed(java.awt.event.KeyEvent evt) {
         if(evt.getKeyCode() == 32 && clock1.paused  == false){clock1.switchPlayers();}//"space bar"
         else if(evt.getKeyCode() == 80){clock1.pauseAlt();}//"p"
-        else if (evt.getKeyCode() == 27){System.exit(1);}//"Escape"
+        //else if (evt.getKeyCode() == 27){System.exit(1);}//"Escape" to exit
         //Grabs KeyCode of pressed key.
 	//System.out.println(evt.getKeyCode());
     }
