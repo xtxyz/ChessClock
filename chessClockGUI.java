@@ -110,11 +110,11 @@ public class chessClockGUI extends javax.swing.JFrame {
         p2TimerLabel = new javax.swing.JLabel();
 		startButton = new javax.swing.JButton();
         doneButton = new javax.swing.JButton();
-		pauseButton = new javax.swing.JButton();
         activePlayerLabel = new javax.swing.JLabel();
         p1Label = new javax.swing.JLabel();
         p2Label = new javax.swing.JLabel();
         instructionLabel = new javax.swing.JLabel();
+		pauseLabel = new javax.swing.JLabel();
 		
 		//and it's layout
 		p2c.anchor = GridBagConstraints.CENTER;
@@ -160,7 +160,7 @@ public class chessClockGUI extends javax.swing.JFrame {
 		
 		p2c.gridx = 3;
 		p2c.gridy = 3;
-		p2Layout.addLayoutComponent(pauseButton, p2c);
+		p2Layout.addLayoutComponent(pauseLabel, p2c);
 		
 		//The elements for the third panel.
 		p1Win = new javax.swing.JLabel();
@@ -277,21 +277,13 @@ public class chessClockGUI extends javax.swing.JFrame {
 
         doneButton.setFont(new java.awt.Font("Ubuntu", 0, 24)); 
         doneButton.setText("Done");
+		doneButton.setFocusable(false);
         doneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doneButtonActionPerformed(evt);
             }
         });
 		panel2.add(doneButton);
-		
-		pauseButton.setFont(new java.awt.Font("Ubuntu", 0, 24));
-		pauseButton.setText("Pause");
-		pauseButton.addActionListener(new java.awt.event.ActionListener(){
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				pauseButtonActionPerformed(evt);
-			}
-		});
-		panel2.add(pauseButton);
 		
 		activePlayerLabel.setBackground(new java.awt.Color(254, 254, 254));
         activePlayerLabel.setOpaque(true);
@@ -308,6 +300,11 @@ public class chessClockGUI extends javax.swing.JFrame {
         instructionLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); 
         instructionLabel.setText("Press \"space\" to switch players, or \"p\" to pause.");
 		panel2.add(instructionLabel);
+		
+		pauseLabel.setFont(new java.awt.Font("Ubuntu", 0, 24));
+		pauseLabel.setText("PAUSED");
+		pauseLabel.setVisible(false);
+		panel2.add(pauseLabel);
 		
 		//Set size and add to mainPanel.
 		panel2.setBounds(0, 0, 960, 290);	
@@ -401,10 +398,6 @@ public class chessClockGUI extends javax.swing.JFrame {
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(1);
     }
-//The listener for the "Pause" button.
-	private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		clock1.pauseAlt();
-	}
 //The listener second panel.
     private void panel2KeyPressed(java.awt.event.KeyEvent evt) {
         if(evt.getKeyCode() == 32 && clock1.paused  == false){clock1.switchPlayers();}//"space bar"
@@ -470,8 +463,8 @@ public class chessClockGUI extends javax.swing.JFrame {
         }
         //Pause method.
         public void pauseAlt() {
-            if(paused){paused = false;}
-            else if(!paused){paused = true;}
+            if(paused){paused = false; pauseLabel.setVisible(false);}
+            else if(!paused){paused = true; pauseLabel.setVisible(true);}
         }
         //End of game method.
         public void gameEnd() {
@@ -565,8 +558,8 @@ public class chessClockGUI extends javax.swing.JFrame {
 	private javax.swing.JPanel panel3;
 	private javax.swing.JButton doneButton2;
     private javax.swing.JLabel activePlayerLabel;
+	private javax.swing.JLabel pauseLabel;
     private javax.swing.JButton doneButton;
-	private javax.swing.JButton pauseButton;
     private javax.swing.JLabel hourNote;
     private javax.swing.JLabel hourShow;
     private javax.swing.JSlider hourSlider;
