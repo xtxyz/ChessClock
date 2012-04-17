@@ -306,7 +306,7 @@ public class chessClockGUI extends javax.swing.JFrame {
 		panel2.add(p2Label);
 
         instructionLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); 
-        instructionLabel.setText("Press \"space\" to switch players.");
+        instructionLabel.setText("Press \"space\" to switch players, or \"p\" to pause.");
 		panel2.add(instructionLabel);
 		
 		//Set size and add to mainPanel.
@@ -455,8 +455,8 @@ public class chessClockGUI extends javax.swing.JFrame {
         public void init() {
             p1H = hour; p1M = minute; p1S = second;
             p2H = hour; p2M = minute; p2S = second;
-            p1DS = 10; p1CS = 10;
-            p2DS = 10; p2CS = 10;
+            p1DS = 0; p1CS = 0;
+            p2DS = 0; p2CS = 0;
             p1Active = true;
             time2 = 0; time3 = 0;
             done = false;
