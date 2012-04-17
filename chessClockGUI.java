@@ -29,6 +29,7 @@ public class chessClockGUI extends javax.swing.JFrame {
 		panel2 = new javax.swing.JPanel();
 		panel3 = new javax.swing.JPanel();
 		
+		//and their layouts.
 		GridBagLayout p1Layout = new java.awt.GridBagLayout();
 		panel1.setLayout(p1Layout);
 		GridBagConstraints p1c = new java.awt.GridBagConstraints();
@@ -109,6 +110,7 @@ public class chessClockGUI extends javax.swing.JFrame {
         p2TimerLabel = new javax.swing.JLabel();
 		startButton = new javax.swing.JButton();
         doneButton = new javax.swing.JButton();
+		pauseButton = new javax.swing.JButton();
         activePlayerLabel = new javax.swing.JLabel();
         p1Label = new javax.swing.JLabel();
         p2Label = new javax.swing.JLabel();
@@ -129,12 +131,17 @@ public class chessClockGUI extends javax.swing.JFrame {
 		
 		p2c.gridx = 0;
 		p2c.gridy = 3;
+		p2c.fill = GridBagConstraints.BOTH;
+		p2c.insets = new Insets(10,10,10,10);
 		p2Layout.addLayoutComponent(activePlayerLabel, p2c);
 		
+		p2c.fill = GridBagConstraints.NONE;
+		p2c.insets = new Insets(20,0,0,0);
 		p2c.gridx = 1;
 		p2c.gridy = 0;
 		p2Layout.addLayoutComponent(instructionLabel, p2c);
 		
+		p2c.insets = new Insets(0,0,0,0);
 		p2c.gridx = 1;
 		p2c.gridy = 2;
 		p2Layout.addLayoutComponent(startButton, p2c);
@@ -150,6 +157,10 @@ public class chessClockGUI extends javax.swing.JFrame {
 		p2c.gridx = 3;
 		p2c.gridy = 2;
 		p2Layout.addLayoutComponent(p2TimerLabel, p2c);
+		
+		p2c.gridx = 3;
+		p2c.gridy = 3;
+		p2Layout.addLayoutComponent(pauseButton, p2c);
 		
 		//The elements for the third panel.
 		p1Win = new javax.swing.JLabel();
@@ -174,7 +185,8 @@ public class chessClockGUI extends javax.swing.JFrame {
 		p3c.gridy = 2;
 		p3Layout.addLayoutComponent(p2Win, p3c);
 
-		//For the main window, I guess. Does it ever mention the main window?
+		//For the main window, I guess. Does it ever mention the main window? 
+		//I suppose this whole thing is an extension of JFrame.
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chess Clock");
 
@@ -236,10 +248,8 @@ public class chessClockGUI extends javax.swing.JFrame {
         });
         panel1.add(readyButton);
 
-		//The first "card"
+		//Set size and add the card to the main panel
         panel1.setBounds(0, 10, 960, 290);
-		
-		//Adding the first card to the card holder.
         mainPanel.add(panel1, PANELONE);
 
 		
@@ -273,6 +283,15 @@ public class chessClockGUI extends javax.swing.JFrame {
             }
         });
 		panel2.add(doneButton);
+		
+		pauseButton.setFont(new java.awt.Font("Ubuntu", 0, 24));
+		pauseButton.setText("Pause");
+		pauseButton.addActionListener(new java.awt.event.ActionListener(){
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				pauseButtonActionPerformed(evt);
+			}
+		});
+		panel2.add(pauseButton);
 		
 		activePlayerLabel.setBackground(new java.awt.Color(254, 254, 254));
         activePlayerLabel.setOpaque(true);
@@ -382,11 +401,15 @@ public class chessClockGUI extends javax.swing.JFrame {
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(1);
     }
-//The listener for the "space bar" that switches the active player.
+//The listener for the "Pause" button.
+	private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		clock1.pauseAlt();
+	}
+//The listener second panel.
     private void panel2KeyPressed(java.awt.event.KeyEvent evt) {
-        if(evt.getKeyCode() == 32 && clock1.paused  == false){clock1.switchPlayers();}
-        else if(evt.getKeyCode() == 80){clock1.pauseAlt();}
-        else if (evt.getKeyCode() == 27){System.exit(1);}
+        if(evt.getKeyCode() == 32 && clock1.paused  == false){clock1.switchPlayers();}//"space bar"
+        else if(evt.getKeyCode() == 80){clock1.pauseAlt();}//"p"
+        else if (evt.getKeyCode() == 27){System.exit(1);}//"Escape"
         //Grabs KeyCode of pressed key.
 	//System.out.println(evt.getKeyCode());
     }
@@ -543,6 +566,7 @@ public class chessClockGUI extends javax.swing.JFrame {
 	private javax.swing.JButton doneButton2;
     private javax.swing.JLabel activePlayerLabel;
     private javax.swing.JButton doneButton;
+	private javax.swing.JButton pauseButton;
     private javax.swing.JLabel hourNote;
     private javax.swing.JLabel hourShow;
     private javax.swing.JSlider hourSlider;
